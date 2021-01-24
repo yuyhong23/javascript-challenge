@@ -25,25 +25,37 @@ var button = d3.select("#filter-btn");
 // Select the form
 var form = d3.select("form");
 
-// Create event handlers 
-button.on("click", runEnter);
-form.on("submit",runEnter);
-
 // Complete the event handler function for the form
 function runEnter() {
 
-  // Prevent the page from refreshing
-  d3.event.preventDefault();
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+  
+    // Select the input element and get the raw HTML node
+    var inputElement = d3.select("#datetime");
+  
+    // Get the value property of the input element
+    var inputValue = inputElement.property("value");
+  
+    console.log(inputValue);
+  
+    // Use the form input to filter the data by datetime
+    var filterData = tableData.filter(info => info.datetime === inputValue);
+    console.log(filterData);
 
-  // Select the input element and get the raw HTML node
-  var inputElement = d3.select("#datetime");
-
-  // Get the value property of the input element
-  var inputValue = inputElement.property("value");
-
-  console.log(inputValue);
-
-  // Use the form input to filter the data by datetime
-  var filterData = tableData.filter(info => info.datetime === inputValue);
-  console.log(filterData);
+    // // Input fields can trigger a change event when new text is entered.
+    // inputValue.on("change", function() {
+    //     var newCells = filterData;
+    //     data.forEach(filterData => {
+    //         var row = tableBody.append("tr");
+    //         Object.entries(filterData).forEach(([key, value]) =>{
+    //         console.log(key, value);
+    //         row.append("td").text(value)
+    //         });
+    //     });
+    // });
 }
+
+// Create event handlers 
+button.on("click", runEnter);
+form.on("submit",runEnter);
