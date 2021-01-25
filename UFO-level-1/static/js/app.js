@@ -54,6 +54,7 @@ function runEnter() {
     //         });
     //     });
     // });
+    const filteredData = d3.selectAll("tr").filter(info => info.datetime === inputValue);
 }
 
 // Create event handlers 
