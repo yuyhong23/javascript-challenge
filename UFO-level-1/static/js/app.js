@@ -54,9 +54,18 @@ function runEnter() {
     //         });
     //     });
     // });
-    const filteredData = d3.selectAll("tr").filter(info => info.datetime === inputValue);
+    //const filteredData = d3.selectAll("tr").filter(info => info.datetime === inputValue);
 }
 
 // Create event handlers 
 button.on("click", runEnter);
 form.on("submit",runEnter);
+
+// Input fields can trigger a change event when new text is entered for filtering.
+var inputValue = inputElement.property("value");
+
+inputValue.on("change", function dataFiltered() {
+  var inputText = d3.event.target.value;
+  var filteredData = d3.selectAll("tr").filter(info => info.datetime === inputText);
+  output.html(filteredData);
+});
