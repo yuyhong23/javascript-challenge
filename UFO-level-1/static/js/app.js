@@ -43,49 +43,18 @@ function runEnter() {
     var filterData = tableData.filter(info => info.datetime === inputValue);
     console.log(filterData);
 
-    // Function for updating the table
-    function dataFiltered() {
-      var inputText = d3.event.target.value;
+    // Clear the original table
+    tableBody.html("");
 
-      //Previous table
-      var rows = tableData.forEach(data => {
-        console.log(data);
-        var row = tableBody.append("tr");
-        Object.entries(data).forEach(([key, value]) =>{
-          console.log(key, value);
-          row.append("td").text(value);
-        })
+    //Loop through the data and append data to the table body
+    filterData.forEach(data => {
+    console.log(data);
+    var row = tableBody.append("tr");
+    Object.entries(data).forEach(([key, value]) =>{
+      console.log(key, value);
+      row.append("td").text(value);
       })
-
-      //Remove table
-      rows.exit().remove();
-      
-      //Display the filtered data table
-      var newRows = filterData.forEach(x => {
-        console.log(x);
-        var newRow = tableBody.append("tr");
-        Object.entries(x).forEach(([key, value]) =>{
-          console.log(key, value);
-          row.append("td").text(value);
-        })
-      })
-    };
-
-    // Input fields can trigger a change event when new text is entered for filtering.
-    inputElement.on("change", dataFiltered);
-
-    // // Input fields can trigger a change event when new text is entered.
-    // inputValue.on("change", function() {
-    //     var newCells = filterData;
-    //     data.forEach(filterData => {
-    //         var row = tableBody.append("tr");
-    //         Object.entries(filterData).forEach(([key, value]) =>{
-    //         console.log(key, value);
-    //         row.append("td").text(value)
-    //         });
-    //     });
-    // });
-    //const filteredData = d3.selectAll("tr").filter(info => info.datetime === inputValue);
+    })
 }
 
 // Create event handlers 
