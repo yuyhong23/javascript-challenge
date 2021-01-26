@@ -32,22 +32,57 @@ function runEnter() {
     d3.event.preventDefault();
   
     // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
+    var inputDate = d3.select("#datetime");
+
+    var inputCity = d3.select("#city");
+
+    var inputState = d3.select("#state");
+
+    var inputCountry = d3.select("#country");
+
+    var inputShape = d3.select("#shape");
   
     // Get the value property of the input element
-    var inputValue = inputElement.property("value");
-  
-    console.log(inputValue);
-  
+    var inputValueDate = inputDate.property("value");
+    console.log(inputValueDate);
+
+    var inputValueCity = inputCity.property("value");
+    console.log(inputValueCity);
+
+    var inputValueState = inputState.property("value");
+    console.log(inputValueState);
+
+    var inputValueCountry = inputCountry.property("value");
+    console.log(inputValueCountry);
+
+    var inputValueShape = inputShape.property("value");
+    console.log(inputValueShape);
+
     // Use the form input to filter the data by datetime
-    var filterData = tableData.filter(info => info.datetime === inputValue);
-    console.log(filterData);
+    var dateTimeFilter = tableData.filter(info => info.datetime === inputValueDate);
+    console.log(dateTimeFilter);
+
+    // Use the form input to filter the data by city
+    var cityFilter = tableData.filter(info => info.city === inputValueCity);
+    console.log(cityFilter);
+
+    // Use the form input to filter the data by state
+    var stateFilter = tableData.filter(info => info.datetime === inputValueState);
+    console.log(stateFilter);
+
+    // Use the form input to filter the data by country
+    var countryFilter = tableData.filter(info => info.datetime === inputValueCountry);
+    console.log(countryFilter);
+
+    // Use the form input to filter the data by shape
+    var shapeFilter = tableData.filter(info => info.datetime === inputValueShape);
+    console.log(shapeFilter);
 
     // Clear the original table
     tableBody.html("");
 
     //Loop through the data and append data to the table body
-    filterData.forEach(data => {
+    dateTimeFilter.forEach(data => {
     console.log(data);
     var row = tableBody.append("tr");
     Object.entries(data).forEach(([key, value]) =>{
