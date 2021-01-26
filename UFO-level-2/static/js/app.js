@@ -58,31 +58,35 @@ function runEnter() {
     var inputValueShape = inputShape.property("value");
     console.log(inputValueShape);
 
-    // Use the form input to filter the data by datetime
-    var dateTimeFilter = tableData.filter(info => info.datetime === inputValueDate);
-    console.log(dateTimeFilter);
+    // // Use the form input to filter the data by datetime
+    // var dateTimeFilter = tableData.filter(info => info.datetime === inputValueDate);
+    // console.log(dateTimeFilter);
 
     // Use the form input to filter the data by city
-    var cityFilter = tableData.filter(info => info.city === inputValueCity);
-    console.log(cityFilter);
+    // var cityFilter = tableData.filter(info => info.city === inputValueCity);
+    // console.log(cityFilter);
 
-    // Use the form input to filter the data by state
-    var stateFilter = tableData.filter(info => info.datetime === inputValueState);
-    console.log(stateFilter);
+    // // Use the form input to filter the data by state
+    // var stateFilter = tableData.filter(info => info.state === inputValueState);
+    // console.log(stateFilter);
 
-    // Use the form input to filter the data by country
-    var countryFilter = tableData.filter(info => info.datetime === inputValueCountry);
-    console.log(countryFilter);
+    // // Use the form input to filter the data by country
+    // var countryFilter = tableData.filter(info => info.country === inputValueCountry);
+    // console.log(countryFilter);
 
-    // Use the form input to filter the data by shape
-    var shapeFilter = tableData.filter(info => info.datetime === inputValueShape);
-    console.log(shapeFilter);
+    // // Use the form input to filter the data by shape
+    // var shapeFilter = tableData.filter(info => info.shape === inputValueShape);
+    // console.log(shapeFilter);
+
+    var filteredData = tableData.filter(info => info.datetime === inputValueDate && 
+      info.city === inputValueCity && info.state === inputValueState && 
+      info.country === inputValueCountry && info.shape === inputValueShape);
 
     // Clear the original table
     tableBody.html("");
 
     //Loop through the data and append data to the table body
-    dateTimeFilter.forEach(data => {
+    filteredData.forEach(data => {
     console.log(data);
     var row = tableBody.append("tr");
     Object.entries(data).forEach(([key, value]) =>{
