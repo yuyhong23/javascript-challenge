@@ -4,7 +4,7 @@ Data and instructions provided by UC Berkeley Extension Data Analytics Bootcamp.
 
 # Introduction 
 
-The goal of this assignment is to use my newfound knowledge and skills on javascript to create a table dynamically based upon a dataset, which will allow users to filter the table data for specific values.
+The goal of this assignment is to use my newfound knowledge and skills on javascript to create a table dynamically based upon a dataset, which will also allow users to filter the table data for specific values.
 
 # Technologies/Libraries
 
