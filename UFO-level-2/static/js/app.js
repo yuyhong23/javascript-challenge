@@ -12,9 +12,9 @@ tableData.forEach(data => {
     var row = tableBody.append("tr");
     Object.entries(data).forEach(([key, value]) =>{
       console.log(key, value);
-      row.append("td").text(value)
-    });
-});
+      row.append("td").text(value);
+    })
+})
 
 //Use a date form in your HTML document and write JavaScript code that will listen for events 
 //and search through the date/time column to find rows that match user input
@@ -81,3 +81,29 @@ function runEnter() {
 button.on("click", runEnter);
 form.on("submit", runEnter);
 
+// Create the reset
+// Select the reset button
+var buttonReset = d3.select("#reset-btn");
+
+// Select the form
+var form = d3.select("form");
+
+// Complete the event handler function for the form
+function resetFunction() {
+  // Prevent the page from refreshing
+  d3.event.preventDefault();
+
+  tableData.forEach(data => {
+    console.log(data);
+    var row = tableBody.append("tr");
+    Object.entries(data).forEach(([key, value]) =>{
+      console.log(key, value);
+      row.append("td").text(value);
+    })
+  })
+}
+
+
+// Create event handlers 
+buttonReset.on("click", resetFunction);
+form.on("submit", resetFunction);
