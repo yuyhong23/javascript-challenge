@@ -81,15 +81,18 @@ function runEnter() {
 button.on("click", runEnter);
 form.on("submit", runEnter);
 
-// Create the reset
 // Select the reset button
-var buttonReset = d3.select("#reset-btn");
+var buttonReset = d3.select("form").select("#reset-btn");
 
-// Complete the event handler function for the form
+// Complete the event handler function for the reset button
 function resetFunction() {
   // Prevent the page from refreshing
   d3.event.preventDefault();
 
+  // Clear the original table
+  tableBody.html("");
+
+  //Loop through the data and append data to the table body
   tableData.forEach(data => {
     console.log(data);
     var row = tableBody.append("tr");
@@ -99,7 +102,6 @@ function resetFunction() {
     })
   })
 }
-
 
 // Create event handlers 
 buttonReset.on("click", resetFunction);
