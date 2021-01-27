@@ -85,9 +85,6 @@ form.on("submit", runEnter);
 // Select the reset button
 var buttonReset = d3.select("#reset-btn");
 
-// Select the form
-var form = d3.select("form");
-
 // Complete the event handler function for the form
 function resetFunction() {
   // Prevent the page from refreshing
